@@ -1,4 +1,6 @@
 import { styled } from "@stitches/react";
+import { useDice } from "../Context/DiceContext";
+import Current from "./Current";
 
 const Wrapper = styled('section', {
   flex: '50%',
@@ -7,25 +9,75 @@ const Wrapper = styled('section', {
   flexDirection: 'column',
   alignItems: 'center',
   transition: 'all 0.75s',
+
+  '.name': {
+    position: 'relative',
+    fontSize: '4rem',
+    textTransform: 'uppercase',
+    letterSpacing: '1px',
+    wordpaScing: '2px',
+    fontWeight: 300,
+    marginBottom: '1rem',
+  },
+
+  '.score': {
+    fontSize: '8rem',
+    fontWeight: 300,
+    color: '#c7365f',
+    marginBottom: 'auto',
+  },
+
+  variants: {
+    isActive: {
+      true: {
+        backgroundColor: 'rgba(255, 255, 255, 0.4)',
+
+        '& .name': {
+          fontWeight: 700,
+        },
+
+        '& .score': {
+          fontWeight: 400,
+        },
+
+        [`& ${Current}`]: {
+          opacity: 1,
+        }
+      }
+    },
+
+    isWinner: {
+      true: {
+        backgroundColor: '#2f2f2f',
+
+        '& .name': {
+          fontWeight: 700,
+          color: '#c7365f',
+        }
+      }
+    }
+  }
 });
 
-function Player() {
+function Player({ name, score, isActive, ...props }) {
+  const { currentScore } = useDice();
+
   return (
-    <Wrapper>
-      <h2 className='name' id='name--0'>
-          Jogador 1
-        </h2>
-        <p className='score' id='score--0'>
-          43
-        </p>
-        <div className='current'>
-          <p className='current-label'>Atual</p>
-          <p className='current-score' id='current--0'>
-            0
-          </p>
-        </div>
+    <Wrapper isActive={isActive} {...props}>
+      <h2 className='name'>
+        {name}
+      </h2>
+      <p className='score'>
+        {score}
+      </p>
+
+      {isActive && (
+        <Current>
+          {currentScore}
+        </Current>
+      )}
     </Wrapper>
   );
 }
 
-export default Wrapper;
+export default Player;
