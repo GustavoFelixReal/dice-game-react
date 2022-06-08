@@ -1,5 +1,5 @@
-import { styled } from "@stitches/react";
-import { useDice } from "../Context/DiceContext";
+import { styled } from '@stitches/react';
+import { useDice } from '../context/DiceContext';
 
 const DiceImage = styled('img', {
   position: 'absolute !important',
@@ -8,19 +8,19 @@ const DiceImage = styled('img', {
   transform: 'translateX(-50%) !important',
   height: '10rem !important',
   boxShadow: '0 2rem 5rem rgba(0, 0, 0, 0.2) !important'
-});
+})
 
 function Dice() {
-  const { diceNumber } = useDice();
+  const { diceNumber } = useDice()
 
   return (
-    !!diceNumber && (
+    !!diceNumber ? (
       <DiceImage
         src={`../../images/dices/dice-${diceNumber}.png`}
         alt="Playing dice"
       />
-    )
+    ) : null
   )
 }
 
-export default Dice;
+export default Dice

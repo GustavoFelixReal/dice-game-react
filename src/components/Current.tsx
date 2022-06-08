@@ -1,5 +1,9 @@
 import { styled } from "@stitches/react";
 
+interface ICurrent {
+  children: React.ReactNode
+}
+
 const Wrapper = styled('div', {
   backgroundColor: '#c7365f',
   opacity: 0.8,
@@ -22,7 +26,7 @@ const Wrapper = styled('div', {
   },
 });
 
-function Current({ children }) {
+function Current({ children }: ICurrent) {
 
   return (
     <Wrapper>

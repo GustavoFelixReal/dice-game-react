@@ -1,4 +1,4 @@
-import { useDice } from '../Context/DiceContext';
+import { useDice } from '../context/DiceContext';
 import Button from './Button';
 
 function RollDice() {

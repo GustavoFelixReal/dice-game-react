@@ -1,14 +1,30 @@
 import { createContext, useCallback, useContext, useEffect, useState } from "react";
 
-const DiceContext = createContext({});
+interface IDiceContext {
+  activePlayer: number
+  currentScore: number
+  diceNumber: number
+  scores: Array<number>
+  winner: number | null
+  holdValue: () => void
+  increaseScore: (player: number, amount: number) => void
+  resetGame: () => void
+  rollDice: () => void
+}
 
-export function DiceProvider({ children }) {
-  const [activePlayer, setActivePlayer] = useState(0);
+interface IDiceProvider {
+  children: React.ReactNode
+}
+
+const DiceContext = createContext({} as IDiceContext);
+
+export function DiceProvider({ children }: IDiceProvider) {
+  const [activePlayer, setActivePlayer] = useState(0); //Tipagem por inferência
   const [currentScore, setCurrentScore] = useState(0);
   const [diceNumber, setDiceNumber] = useState(0);
   const [isGameActive, setIsGameActive] = useState(true);
   const [scores, setScores] = useState([0, 0]);
-  const [winner, setWinner] = useState(null);
+  const [winner, setWinner] = useState<number | null>(null); //Tipagem por definição
 
   useEffect(() => {
     scores.forEach((score, index) => {
@@ -20,7 +36,7 @@ export function DiceProvider({ children }) {
     })
   }, [scores]);
 
-  const increaseScore = useCallback((player, amount) => {
+  const increaseScore = useCallback((player: number, amount: number) => {
     if (isGameActive) {
       setScores(scores => {
         const updatedScores = [...scores];

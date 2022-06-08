@@ -14,7 +14,6 @@ const Button = styled('button', {
   fontWeight: '400',
   transition: 'all 0.2s',
 
-  backgroundColor: 'white',
   backgroundColor: 'rgba(255, 255, 255, 0.6)',
   backdropFilter: 'blur(10px)',
 

@@ -1,6 +1,13 @@
 import { styled } from "@stitches/react";
-import { useDice } from "../Context/DiceContext";
+import { useDice } from "../context/DiceContext";
 import Current from "./Current";
+
+interface IPlayer { 
+  name: string
+  score: number
+  isActive?: boolean
+  isWinner?: boolean
+}
 
 const Wrapper = styled('section', {
   flex: '50%',
@@ -59,7 +66,7 @@ const Wrapper = styled('section', {
   }
 });
 
-function Player({ name, score, isActive, ...props }) {
+function Player({ name, score, isActive, ...props }: IPlayer) {
   const { currentScore } = useDice();
 
   return (
