@@ -1,5 +1,5 @@
 import { styled } from "@stitches/react";
-import { useDice } from "../Context/DiceContext";
+import { useDice } from "../context/DiceContext";
 
 const DiceImage = styled('img', {
   position: 'absolute !important',

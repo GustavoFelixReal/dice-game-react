@@ -1,4 +1,4 @@
-import { DiceProvider } from "../Context/DiceContext";
+import { DiceProvider } from "../context/DiceContext";
 
 import Container from "../components/Container";
 import Dice from "../components/Dice";

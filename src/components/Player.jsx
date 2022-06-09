@@ -1,5 +1,5 @@
 import { styled } from "@stitches/react";
-import { useDice } from "../Context/DiceContext";
+import { useDice } from "../context/DiceContext";
 import Current from "./Current";
 
 const Wrapper = styled('section', {
